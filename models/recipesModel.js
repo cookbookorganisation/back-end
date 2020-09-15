@@ -5,11 +5,23 @@ module.exports = {
     getIndividualRecipe,
     getFavoriteRecipes, 
     deleteRecipeFromFavorites,
-    deleteRecipe
+    deleteRecipe,
+    editRecipe,
+    getAllRecipes
+};
+
+// for testing purposes, user won't have this option
+function getAllRecipes(){
+    return db("recipes")
 };
 
 // for basic info in cards in a collection
 function getRecipesForCollection(collectionId) {
+    return db("recipes")
+};
+
+// for when a user wants to update a recipe they've already posted
+function editRecipe(recipeID) {
     return db("recipes")
 };
 
