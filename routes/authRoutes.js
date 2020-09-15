@@ -9,18 +9,14 @@ router.post('/register', async (req, res, next) => {
     try {
         const { name, password } = req.body;
         const user = await Users.findBy({ name }).first();
-
         if (user) {
             return res.status(409).json({ message: "Username is already taken" })
         };
-
         if (!password) {
             return res.status(400).json({ message: "Please provide a password" })
         };
-
         const newUser = await Users.createUser(req.body);
         res.status(201).json(newUser);
-
     } catch(err){
         next(err)
     }
@@ -30,14 +26,11 @@ router.post('/login', async (req, res, next) => {
     try {
         const { name, password } = req.body;
         const isPasswordValid = await bcrypt.compare(password, req.dbUser.password);
-
         if(!isPasswordValid){
             return res.status(401).json({ message: "Invalid password" })
         };
-
         req.session.user = req.dbUser
         res.json({message: `Welcome ${name}!`})
-
     } catch(err) {
         next(err)
     }
