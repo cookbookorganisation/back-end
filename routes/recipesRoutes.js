@@ -12,6 +12,21 @@ router.get('/', async (req, res, next) => {
     }
 });
 
+// upload a recipe - does this go here?
+router.post('/', async (req, res, next) => {
+    try {
+        // const { id } = req.params
+        // const recipe = await Recipes.editRecipe(id)
+        // if (recipe) {
+        //     res.json(recipe)
+        // } else {
+        //     res.status(404).json({ message: "Could not find a recipe with the specified id." })
+        // }
+    } catch(err) {
+        next(err)
+    }
+});
+
 // find a recipe by id
 router.get('/:id', async (req, res, next) => {
     try {
@@ -28,6 +43,8 @@ router.get('/:id', async (req, res, next) => {
 });
 
 // edit a recipe - can only do on an individual recipe page
+// SHOULD THIS BE BROKEN UP, OR JUST HAVE MORE COMPLEX LOGIC? THERE'S SEVERAL TYPES OF EDITS HERE,
+// INCLUDING IF THE USER WANTS TO FAVORITE IT. ALSO DIDN'T ACCOUNT FOR COMMENTS YET
 router.put('/:id', async (req, res, next) => {
     try {
         const { id } = req.params

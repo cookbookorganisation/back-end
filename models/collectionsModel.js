@@ -5,10 +5,10 @@ module.exports = {
    deleteCollection,
    getUsersCollections,
    changePrivacySetting,
-   leaveGroup,
-   joinGroup, 
+   leaveCollection,
+   joinCollection, 
    editCollection,
-   makeGroup,
+   makeCollection,
    getIndividualCollection
 };
 
@@ -46,17 +46,17 @@ function changePrivacySetting(collectionID) {
     return db("collections")
 };
 
-// for when a user wants to leave a group
-function leaveGroup(userID, collectionID) {
+// for when a user wants to leave a Collection
+function leaveCollection(userID, collectionID) {
     return db("collections")
 };
 
-// for when a user wants to join a group
-function joinGroup(userID, collectionID) {
+// for when a user wants to join a Collection
+function joinCollection(userID, collectionID) {
     return db("collections")
 };
 
-// for when a user wants to make a new group
-function makeGroup(userID) {
+// for when a user wants to make a new Collection
+function makeCollection(userID) {
     return db("collections")
 };

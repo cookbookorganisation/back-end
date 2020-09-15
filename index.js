@@ -8,6 +8,8 @@ const authRoutes = require('./routes/authRoutes');
 const usersRoutes = require("./routes/usersRoutes");
 const collectionsRoutes = require('./routes/collectionsRoutes');
 const recipesRoutes = require('./routes/recipesRoutes');
+const myCollectionsRoutes = require('./routes/myCollectionsRoutes');
+const myFavoritesRoutes = require('./routes/myFavoritesRoutes');
 
 const server = express();
 const PORT = 8000;
@@ -35,6 +37,8 @@ server.use('/api', authRoutes);
 server.use('/api/users', usersRoutes);
 server.use('/api/recipes', recipesRoutes);
 server.use('/api/collections', collectionsRoutes);
+server.use('/api/mycollections', myCollectionsRoutes);
+server.user('/api/myfavorites', myFavoritesRoutes);
 
 server.use((err, req, res, next) => {
     console.log( "Here's the error: ", err)
