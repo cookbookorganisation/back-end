@@ -1,0 +1,30 @@
+const express = require("express");
+const router = express.Router();
+const Recipes = require('../models/recipesModel');
+
+//get list of all recipes
+router.get('/', async (req, res, next) => {
+    try {
+        const recipes = await Recipes.getRecipes()
+        res.json(recipes)
+    } catch(err) {
+        next(err)
+    }
+})
+
+// find a recipe by id
+router.get('/:id', async (req, res, next) => {
+    try {
+        const { id } = req.params
+        const recipe = await Recipes.findRecipe(id)
+        if (recipe) {
+            res.json(recipe)
+        } else {
+            res.status(404).json({ message: "Could not find a recipe with the specified id." })
+        }
+    } catch(err) {
+        next(err)
+    }
+})
+
+module.exports = router;
