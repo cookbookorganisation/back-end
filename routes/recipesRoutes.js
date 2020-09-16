@@ -2,17 +2,32 @@ const express = require("express");
 const router = express.Router();
 const Recipes = require('../models/recipesModel');
 
-//get list of all recipes for testing purposes; user won't have this option
+//get router to see all recipes; user won't have this option yet - for testing purposes
 router.get('/', async (req, res, next) => {
-    try {
-        const recipes = await Recipes.getAllRecipes()
-        res.json(recipes)
-    } catch(err) {
-        next(err)
-    }
+    // try {
+    //     const recipes = await Recipes.getAllRecipes()
+    //     res.json(recipes)
+    // } catch(err) {
+    //     next(err)
+    // }
 });
 
-// upload a recipe - does this go here?
+// get router to see individual recipe 
+router.get('/:id', async (req, res, next) => {
+    // try {
+    //     const { id } = req.params
+    //     const recipe = await Recipes.findRecipe(id)
+    //     if (recipe) {
+    //         res.json(recipe)
+    //     } else {
+    //         res.status(404).json({ message: "Could not find a recipe with the specified id." })
+    //     }
+    // } catch(err) {
+    //     next(err)
+    // }
+});
+
+// post router for a user to upload a new recipe 
 router.post('/', async (req, res, next) => {
     try {
         // const { id } = req.params
@@ -27,54 +42,35 @@ router.post('/', async (req, res, next) => {
     }
 });
 
-// find a recipe by id
-router.get('/:id', async (req, res, next) => {
-    try {
-        const { id } = req.params
-        const recipe = await Recipes.findRecipe(id)
-        if (recipe) {
-            res.json(recipe)
-        } else {
-            res.status(404).json({ message: "Could not find a recipe with the specified id." })
-        }
-    } catch(err) {
-        next(err)
-    }
-});
-
-// edit a recipe - can only do on an individual recipe page
-// ALSO DIDN'T ACCOUNT FOR COMMENTS YET
+// put router for a user to edit a recipe from individual recipe page
 router.put('/:id', async (req, res, next) => {
-    try {
-        const { id } = req.params
-        const recipe = await Recipes.editRecipe(id)
-        if (recipe) {
-            res.json(recipe)
-        } else {
-            res.status(404).json({ message: "Could not find a recipe with the specified id." })
-        }
-    } catch(err) {
-        next(err)
-    }
+    // try {
+    //     const { id } = req.params
+    //     const recipe = await Recipes.editRecipe(id)
+    //     if (recipe) {
+    //         res.json(recipe)
+    //     } else {
+    //         res.status(404).json({ message: "Could not find a recipe with the specified id." })
+    //     }
+    // } catch(err) {
+    //     next(err)
+    // }
 });
 
-// post route for favoriting a recipe
 
-// del route for unfavoriting a recipe
-
-// delete a recipe - can only do on an individual recipe page
+// delete router for an admin to delete a recipe on an individual recipe page
 router.del('/:id', async (req, res, next) => {
-    try {
-        const { id } = req.params
-        const recipe = await Recipes.deleteRecipe(id)
-        // if (recipe) {
-        //     res.json({ message: "Recipe successfully deleted"})
-        // } else {
-        //     res.status(404).json({ message: "Could not find a recipe with the specified id." })
-        // }
-    } catch(err) {
-        next(err)
-    }
+    // try {
+    //     const { id } = req.params
+    //     const recipe = await Recipes.deleteRecipe(id)
+    //     if (recipe) {
+    //         res.json({ message: "Recipe successfully deleted"})
+    //     } else {
+    //         res.status(404).json({ message: "Could not find a recipe with the specified id." })
+    //     }
+    // } catch(err) {
+    //     next(err)
+    // }
 });
 
 module.exports = router;
