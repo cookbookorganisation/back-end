@@ -21,6 +21,13 @@ function getRecipesForCollection(collectionId) {
     return db("recipes")
 };
 
+// for the user's favorited recipes
+// is this redundant??????????????????????????????????????
+function getFavoriteRecipes(userId) {
+    // - GET for recipe (title, image, prep_time, bake/cook_time. description), and users_recipe (all of them will be liked, this shows which)
+    return db("recipes")
+};
+
 // for when a user wants to update a recipe they've already posted
 function editRecipe(recipeID) {
     return db("recipes")
@@ -33,12 +40,6 @@ function getIndividualRecipe(id) {
     // user (name and photo) ((will this be a link for a user profile that has all the recipes they’ve uploaded??)), 
     // comments (comment, user_id, recipe_id), user (name of person who wrote comment, and their photo), users_recipes (is heart red?)
     return db("recipes").where({ id }).first()
-};
-
-// for the user's favorited recipes
-function getFavoriteRecipes(userId) {
-    // - GET for recipe (title, image, prep_time, bake/cook_time. description), and users_recipe (all of them will be liked, this shows which)
-    return db("recipes")
 };
 
 // for when a user unfavorites a recipe

@@ -43,8 +43,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 // edit a recipe - can only do on an individual recipe page
-// SHOULD THIS BE BROKEN UP, OR JUST HAVE MORE COMPLEX LOGIC? THERE'S SEVERAL TYPES OF EDITS HERE,
-// INCLUDING IF THE USER WANTS TO FAVORITE IT. ALSO DIDN'T ACCOUNT FOR COMMENTS YET
+// ALSO DIDN'T ACCOUNT FOR COMMENTS YET
 router.put('/:id', async (req, res, next) => {
     try {
         const { id } = req.params
@@ -58,6 +57,10 @@ router.put('/:id', async (req, res, next) => {
         next(err)
     }
 });
+
+// post route for favoriting a recipe
+
+// del route for unfavoriting a recipe
 
 // delete a recipe - can only do on an individual recipe page
 router.del('/:id', async (req, res, next) => {

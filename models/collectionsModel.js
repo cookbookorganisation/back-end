@@ -4,7 +4,6 @@ module.exports = {
    getPublicColections,
    deleteCollection,
    getUsersCollections,
-   changePrivacySetting,
    leaveCollection,
    joinCollection, 
    editCollection,
@@ -38,11 +37,6 @@ function deleteCollection(collectionID) {
 
 // for when a user wants to edit metadata about a collection, like photo, or name
 function editCollection(collectionID) {
-    return db("collections")
-};
-
-// for when a user wants to toggle the privacy boolean
-function changePrivacySetting(collectionID) {
     return db("collections")
 };
 

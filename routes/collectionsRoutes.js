@@ -2,6 +2,37 @@ const express = require("express");
 const router = express.Router();
 const Collections = require('../models/collectionsModel');
 
+
+// on my favorites page, user can see what recipes they've already liked
+router.get('/', async (req, res, next) => {
+    try {
+        const recipes = await Recipes.getFavoriteRecipes()
+        if (recipes) {
+            res.json(recipes)
+        }
+    } catch(err) {
+        next(err)
+    }
+});
+
+//write router for user to unfavorite a recipe
+
+
+// on dashboad, ("my_collections"), user can see what collections they're already a part of
+router.get('/', async (req, res, next) => {
+    try {
+        const collections = await Collections.getUsersCollections()
+        if (collections) {
+            res.json(collections)
+        }
+    } catch(err) {
+        next(err)
+    }
+});
+
+
+
+
 // get all public collections
 router.get('/', async (req, res, next) => {
     try {
@@ -46,8 +77,6 @@ router.get('/:id', async (req, res, next) => {
 });
 
 // edit an individal collection page
-// IS IT NECESSARY TO HAVE DIFFERENT ROUTES HERE FOR WHAT TYPE OF EDITING OR SHOULD IT JUST BE IN LOGIC?
-// leaveCollection, joinCollection, editCollection, changePrivacySetting
 router.put('/:id', async (req, res, next) => {
     try {
         const { id } = req.params
@@ -61,6 +90,10 @@ router.put('/:id', async (req, res, next) => {
         next(err)
     }
 });
+
+// post route for joining a collection
+
+// del route for leaving a collection
 
 // del an individal collection page
 router.del('/:id', async (req, res, next) => {
