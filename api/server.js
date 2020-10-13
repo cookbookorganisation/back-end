@@ -10,7 +10,7 @@ const helmet = require("helmet");
 // const usersRoutes = require("./routes/usersRoutes");
 // const collectionsRoutes = require("./routes/collectionsRoutes");
 // const recipesRoutes = require("./routes/recipesRoutes");
-// const comementsRoutes = require("./routes/commentsRoutes");
+// const commentsRoutes = require("./routes/commentsRoutes");
 // const tagsRoutes = require("./routes/tagsRoutes");
 // const ingredientsRoutes = require("./routes/ingredientsRoutes");
 // const measurementUnitsRoutes = require("./routes/measurementUnitsRoutes");
@@ -47,10 +47,10 @@ server.use(express.json());
 
 // server.use('***URL***', ***RouterGoesHere***)
 // server.use("/api", authRoutes);
-// server.use("/api/users", usersRoutes);
+server.use("/api/users", usersRoutes);
 // server.use('/api/recipes', recipesRoutes);
 // server.use('/api/collections', collectionsRoutes);
-// server.use('/api/comments', comementsRoutes);
+// server.use('/api/comments', commentsRoutes);
 // server.use('/api/tags', tagsRoutes);
 // server.use('/api/ingredients', ingredientsRoutes);
 // server.use('/api/measurementUnits', measurementUnitsRoutes);
@@ -66,5 +66,9 @@ server.use(express.json());
 //   console.log("Here's the error: ", err);
 //   res.status(500).json("Something went wrong");
 // });
+
+server.get("/", (req, res) => {
+  res.status(200).json("Hello world!");
+});
 
 module.exports = server;
